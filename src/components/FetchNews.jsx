@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 /*
 {
     "userId": 1,
@@ -12,13 +12,15 @@ const FetchNews = () => {
 
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
+useEffect(() => {
+
     fetch(url)
     .then((responde)=> response.json())
     .then((data) => {
         setNews(data)
         console.log(news)
-    })
-    .catch(error)
+    });
+}); 
 
     return (
         <div>
