@@ -1,3 +1,4 @@
+import { Card } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 /*
 {
@@ -12,22 +13,28 @@ const FetchNews = () => {
 
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
-useEffect(() => {
+    useEffect(() => {
 
-    fetch(url)
-    .then((responde)=> response.json())
-    .then((data) => {
-        setNews(data)
-        console.log(news)
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                setNews(data)
+                console.log(news)
+            });
     });
-}); 
+
 
     return (
         <div>
             <h1>Noticias</h1>
+            {news.map((dado) => (
+                <div key={dado.id}>
+                    <div>{dado.title}</div>
+                    <div>{dado.body}</div>
+                </div>
+            ))}
         </div>
-
-        )
-    }
+    );
+};
 
 export default FetchNews;
