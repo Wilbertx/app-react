@@ -1,4 +1,4 @@
-import { Card } from '@mui/material';
+import { Card, CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 /*
 {
@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react'
 */
 const FetchNews = () => {
     const [news, setNews] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -19,20 +20,22 @@ const FetchNews = () => {
             .then((response) => response.json())
             .then((data) => {
                 setNews(data)
-                console.log(news)
+                setIsLoading(false)
             });
     });
-
 
     return (
         <div>
             <h1>Noticias</h1>
-            {news.map((dado) => (
+            {
+             isLoading ? (<CircularProgress />) : (         
+                news.map((dado) => (
                 <div key={dado.id}>
                     <div>{dado.title}</div>
                     <div>{dado.body}</div>
                 </div>
-            ))}
+            ))
+        )}
         </div>
     );
 };
