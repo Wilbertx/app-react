@@ -31,19 +31,20 @@ const FetchProducts = () => {
   }, []);
 
   return (
-    <Grid container spacing={2} xs={12}>
+    <Grid container spacing={2}>
+      
       {isLoading ? (
         <div>Carregando</div>
       ) : (
         data.map((produto) => (
           <Grid
-            item
-            sx={2}
+            item={true}
             xs={2}
             md={4}
-            lg={4}
+            lg={2}
             display="flex"
             alignItems="stretch"
+            key={produto.id}
           >
             <Card
               key={produto.id}
